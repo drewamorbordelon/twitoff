@@ -1,2 +1,2 @@
 # twitoff
-An application using Flask and python to compare twitter users
+An application using Flask and Python to compare twitter users
