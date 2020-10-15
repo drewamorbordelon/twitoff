@@ -81,4 +81,8 @@ def create_app():
         return render_template('base.html', title='Reset Database!')
 
 
+<<<<<<< HEAD
     return app
+=======
+    return app
+>>>>>>> 5899639952cb839c499ce384ab140b01d926800f
