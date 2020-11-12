@@ -2,7 +2,7 @@
 import tweepy
 import spacy
 from .models import DB, Tweet, User
-from os import getenv
+from os import getenv  # imports .env file
 
 # Grabbing from your own .env file
 TWITTER_API_KEY = getenv('TWITTER_API_KEY')
@@ -12,7 +12,7 @@ TWITTER = tweepy.API(TWITTER_AUTH)
 
 
 # for turning our tweets into an array of numbers
-nlp = spacy.load('my_model') # loaded from my_models dir
+nlp = spacy.load("my_model") # loaded from my_models dir
 def vectorize_tweet(tweet_text):
   return nlp(tweet_text).vector
 
@@ -25,8 +25,10 @@ def add_or_update_user(username):
     DB.session.add(db_user)
 
     tweets = twitter_user.timeline(
-      count=200, exclude_replies=True,
-      include_rts=False, tweet_mode='extended',
+      count=200, 
+      exclude_replies=True,
+      include_rts=False, 
+      tweet_mode='extended',
       since_id=db_user.newest_tweet_id
     )
 

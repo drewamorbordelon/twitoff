@@ -30,12 +30,12 @@ class Tweet(DB.Model):
     return "<Tweet: {}>".format(self.text)
 
 
-#  Example users but remember they don't have tweets
-# def insert_example_users():
-#     """Example Users"""
-#     bill = User(id=1, name="BillGates")
-#     elon = User(id=2, name="ElonMusK")
+#Example users but remember they don't have tweets
+def insert_example_users():
+    """Example Users"""
+    bill = User(id=1, name="BillGates")
+    elon = User(id=2, name="ElonMusK")
 
-#     DB.session.add(bill)
-#     DB.session.add(elon)
-#     DB.session.commit()
+    DB.session.add(bill)
+    DB.session.add(elon)
+    DB.session.commit()

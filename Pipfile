@@ -1,35 +1,21 @@
 [[source]]
-<<<<<<< HEAD
 name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-=======
-url = "https://pypi.python.org/simple"
-verify_ssl = true
-name = "pypi"
->>>>>>> 5899639952cb839c499ce384ab140b01d926800f
 
 [packages]
-flask = "*"
-jinja2 = "*"
-flask-sqlalchemy = "*"
 tweepy = "*"
 spacy = "*"
 python-dotenv = "*"
+flask = "*"
+flask-sqlalchemy = "*"
+jinja2 = "*"
+sklearn = "*"
 scikit-learn = "*"
-<<<<<<< HEAD
-numpy = "*"
 psycopg2-binary = "*"
 gunicorn = "*"
 
-=======
-psycopg2-binary = "*"
-gunicorn = "*"
-
-[dev-packages]
-
->>>>>>> 5899639952cb839c499ce384ab140b01d926800f
 [requires]
 python_version = "3.8"

@@ -1,29 +1,32 @@
-"""Main app/routig file for Twitoff"""
+"""Main app/routing file for Twitoff"""
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request  #1
 from .models import DB, User
 from .twitter import add_or_update_user, update_all_users
-from os import getenv
+from os import getenv  # imports .env file
 from .predict import predict_user
 
 
 
-def create_app():
+def create_app(): #1
     """ Creates and Configures a Flask application"""
-
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URI')
+    app.config['SQLALCHEMY_DATABASE_URI'] = getenv("DATABASE_URI")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     DB.init_app(app)
 
 
     @app.route('/')
     def root():
-        return render_template("base.html", title="Home", users=User.query.all())
+        DB.drop_all()
+        DB.create_all()
+
+        users = User.query.all()
+        return render_template("base.html", title="Home", users=users)
 
 
     @app.route('/compare', methods=['POST'])
-    def compare(message=''):
+    def compare():
         # grabs inputted values from the dropdown 
         user0, user1 = sorted(
             [request.values['user1'],
@@ -67,6 +70,8 @@ def create_app():
 
     @app.route('/update')
     def update():
+        reset()     # check
+        insert_temp_users()  # check
         # updates our users from the function in twitter.py
         update_all_users()
         return render_template('base.html', title="Tweets have been updated!", users=User.query.all())
@@ -80,5 +85,11 @@ def create_app():
         DB.create_all()
         return render_template('base.html', title='Reset Database!')
 
+
+    
+
+    def insert_temp_users():
+        get_user('nasa')
+        get_user('elonmusk')
 
     return app
