@@ -27,7 +27,4 @@ def predict_user(user0_name, user1_name, hypo_tweet_text):
   hypo_tweet_vect = vectorize_tweet(hypo_tweet_text)
   return log_reg.predict(np.array(hypo_tweet_vect).
 reshape(1, -1))
-<<<<<<< HEAD
-=======
 
->>>>>>> 5899639952cb839c499ce384ab140b01d926800f
