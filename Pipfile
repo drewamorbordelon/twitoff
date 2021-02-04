@@ -7,15 +7,15 @@ verify_ssl = true
 
 [packages]
 tweepy = "*"
-spacy = "*"
 python-dotenv = "*"
-flask = "*"
-flask-sqlalchemy = "*"
-jinja2 = "*"
+Flask-SQLAlchemy = "*"
 sklearn = "*"
 scikit-learn = "*"
 psycopg2-binary = "*"
 gunicorn = "*"
+Jinja2 = "*"
+spacy = "*"
+flask = "*"
 
 [requires]
 python_version = "3.8"

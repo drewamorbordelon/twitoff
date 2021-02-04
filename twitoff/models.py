@@ -2,12 +2,10 @@
 
 from flask_sqlalchemy import SQLAlchemy
 
-
 DB = SQLAlchemy()
 
-
 # User table with columns id and name
-class User(DB.Model):
+class User(DB.Model):  #  inherits DB.Model here
   """Twitter Users corresponding to Tweets"""
   id = DB.Column(DB.BigInteger, primary_key=True)
   name = DB.Column(DB.String, nullable=False)
@@ -23,19 +21,23 @@ class Tweet(DB.Model):
   id = DB.Column(DB.BigInteger, primary_key=True)
   text = DB.Column(DB.Unicode(300))
   vect = DB.Column(DB.PickleType, nullable=False)
+
   user_id = DB.Column(DB.BigInteger, DB.ForeignKey('user.id'), nullable=False)
-  user = DB.relationship("User", backref=DB.backref("tweets", lazy=True))
+  user = DB.relationship("User", backref=DB.backref("tweets", lazy=True))  # like a join on User but not a join
+  # references the text from class Tweet that references the User
+
 
   def __repr__(self):
+    # return "<User: {}>".format(self.name)
     return "<Tweet: {}>".format(self.text)
 
 
 #Example users but remember they don't have tweets
-def insert_example_users():
-    """Example Users"""
-    bill = User(id=1, name="BillGates")
-    elon = User(id=2, name="ElonMusK")
+# def insert_example_users():
+#   """Example Users"""
+#   bill = User(id=1, name="BillGates")
+#   elon = User(id=2, name="ElonMusK")
 
-    DB.session.add(bill)
-    DB.session.add(elon)
-    DB.session.commit()
+#   DB.session.add(bill)
+#   DB.session.add(elon)
+#   DB.session.commit()
