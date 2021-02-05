@@ -9,8 +9,8 @@ The user inputs two Twitter handles. Then the application user inputs a phrase o
 Download the repo and navigate there from the command line:
 
 ```sh
-git clone https://github.com/drewamorbordelon/Twitoff-mvp.git
-cd Twitoff-mvp
+git clone https://github.com/drewamorbordelon/twitoff.git
+cd twitoff
 ```
 
 
