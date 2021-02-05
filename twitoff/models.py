@@ -18,26 +18,16 @@ class User(DB.Model):  #  inherits DB.Model here
 # Tweet table with columns id, text, and user_id
 class Tweet(DB.Model):
   """Tweet related to a user"""
+  #  Primary id column
   id = DB.Column(DB.BigInteger, primary_key=True)
+  #  text column of character length 300 (unicode)
   text = DB.Column(DB.Unicode(300))
   vect = DB.Column(DB.PickleType, nullable=False)
-
+  #  Foreign Key = user.id
   user_id = DB.Column(DB.BigInteger, DB.ForeignKey('user.id'), nullable=False)
   user = DB.relationship("User", backref=DB.backref("tweets", lazy=True))  # like a join on User but not a join
   # references the text from class Tweet that references the User
 
 
   def __repr__(self):
-    # return "<User: {}>".format(self.name)
     return "<Tweet: {}>".format(self.text)
-
-
-#Example users but remember they don't have tweets
-# def insert_example_users():
-#   """Example Users"""
-#   bill = User(id=1, name="BillGates")
-#   elon = User(id=2, name="ElonMusK")
-
-#   DB.session.add(bill)
-#   DB.session.add(elon)
-#   DB.session.commit()

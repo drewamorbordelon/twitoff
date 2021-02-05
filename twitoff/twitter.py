@@ -36,8 +36,11 @@ def add_or_update_user(username):
         for tweet in tweets:
             # stores numerical representations
             vectorized_tweet = vectorize_tweet(tweet.full_text)
-            db_tweet = Tweet(id=tweet.id, text=tweet.full_text,
-                             vect=vectorized_tweet)
+            db_tweet = Tweet(
+                id=tweet.id, 
+                text=tweet.full_text,
+                vect=vectorized_tweet
+                )
             db_user.tweets.append(db_tweet)
             DB.session.add(db_tweet)
 
@@ -50,8 +53,3 @@ def add_or_update_user(username):
     else:
         DB.session.commit()
 
-
-def update_all_users():
-    """Update all Tweets for all Users in the User table."""
-    for user in User.query.all():
-        add_or_update_user(user.name)
