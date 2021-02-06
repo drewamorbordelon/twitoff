@@ -17,7 +17,7 @@ cd twitoff
 ## Setup and activate a virtual environment:
 
 ```sh
-pipenv install Flask Flask-SQLAlchemy Flask Migrate
+pipenv install Flask Flask-SQLAlchemy scikit-learn tweepy spacy python-dotenv jinja2 gunicorn psycopg2-binary
 pipenv shell
 ```
 
