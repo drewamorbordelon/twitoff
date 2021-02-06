@@ -15,7 +15,8 @@ psycopg2-binary = "*"
 gunicorn = "*"
 Jinja2 = "*"
 spacy = "*"
-flask = "*"
+Flask = "*"
+jinja2 = "*"
 
 [requires]
 python_version = "3.8"
