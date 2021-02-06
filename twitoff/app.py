@@ -9,7 +9,7 @@ export FLASK_APP=twitoff (main directory)
 flask shell (gives a REPL to run Flask in python)
 """
 
-
+from flask_migrate import Migrate
 from flask import Flask, render_template, request  # request allows posting
 from .models import DB, User
 from .twitter import add_or_update_user   #, update_all_users, insert_example_users
@@ -22,7 +22,8 @@ def create_app():
     app = Flask(__name__)
 
     app.config['SQLALCHEMY_DATABASE_URI'] = getenv("DATABASE_URI")  #  getenv("DATABASE_URI")  
-    app.config['SQLALCHEMY_TRACK_MODICATIONS'] = False   # if I make changes I don't need to know about it
+    app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+    # app.config['SQLALCHEMY_TRACK_MODICATIONS'] = False   # if I make changes I don't need to know about it
     DB.init_app(app)   #  initialize the DataBase with the application
 
     @app.route('/')  # This is the base url (@app.route- specific to Flask) `Listens for the page request/visit` 

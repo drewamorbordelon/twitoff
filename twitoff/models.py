@@ -4,23 +4,23 @@ from flask_sqlalchemy import SQLAlchemy
 
 DB = SQLAlchemy()
 
-# User table with columns id and name
+# USER TABLE with columns id and name
 class User(DB.Model):  #  inherits DB.Model here
   """Twitter Users corresponding to Tweets"""
-  id = DB.Column(DB.BigInteger, primary_key=True)
-  name = DB.Column(DB.String, nullable=False)
-  newest_tweet_id = DB.Column(DB.BigInteger)
+  id = DB.Column(DB.BigInteger, primary_key=True) # id column (primary key)
+  name = DB.Column(DB.String, nullable=False)  # name column
+  newest_tweet_id = DB.Column(DB.BigInteger)  #  recognizes most recent tweet
 
   def __repr__(self):
     return "<User: {}>".format(self.name)
 
 
-# Tweet table with columns id, text, and user_id
+# TWEET TABLE with columns id, text, and user_id
 class Tweet(DB.Model):
   """Tweet related to a user"""
   #  Primary id column
   id = DB.Column(DB.BigInteger, primary_key=True)
-  #  text column of character length 300 (unicode)
+  #  text column with character length 300 (unicode)
   text = DB.Column(DB.Unicode(300))
   vect = DB.Column(DB.PickleType, nullable=False)
   #  Foreign Key = user.id

@@ -1,22 +1,22 @@
 [[source]]
-name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
-
-[dev-packages]
+name = "pypi"
 
 [packages]
+flask = "*"
+flask-sqlalchemy = "*"
 tweepy = "*"
-python-dotenv = "*"
-Flask-SQLAlchemy = "*"
-sklearn = "*"
-scikit-learn = "*"
-psycopg2-binary = "*"
 gunicorn = "*"
-Jinja2 = "*"
-spacy = "*"
-Flask = "*"
+psycopg2-binary = "*"
+python-dotenv = "*"
+install = "*"
+setuptools = "==45.3.0"
 jinja2 = "*"
+spacy = "*"
+flask-migrate = "*"
+
+[dev-packages]
 
 [requires]
 python_version = "3.8"
