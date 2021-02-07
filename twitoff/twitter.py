@@ -1,8 +1,10 @@
 """Retrieve Tweets, embeddings, and push to our database"""
-from os import getenv
-import tweepy  # to interact with the twitter API
-import spacy  # will use later
+
 from .models import DB, Tweet, User
+import tweepy  # to interact with the twitter API
+import spacy  
+from os import getenv
+
 
 
 TWITTER_AUTH = tweepy.OAuthHandler(
@@ -44,6 +46,20 @@ def add_or_update_user(username):
 
     else:
         DB.session.commit()
+
+
+def update_all_users():
+    """Update all Tweets for all Users in the User table."""
+    for user in User.query.all():
+        add_or_update_user(user.name)
+
+def add_users(users):
+    """
+    Add/update a list of users (strings of user names).
+    May take awhile, so run "offline" (interactive shell).
+    """
+    for user in users:
+        add_or_update_user(user)
 
 
 

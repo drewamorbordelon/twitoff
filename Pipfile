@@ -6,15 +6,14 @@ name = "pypi"
 [packages]
 flask = "*"
 flask-sqlalchemy = "*"
+jinja2 = "*"
+scikit-learn = "*"
+python-dotenv = "*"
+spacy = "*"
 tweepy = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
-python-dotenv = "*"
-install = "*"
 setuptools = "==45.3.0"
-jinja2 = "*"
-spacy = "*"
-flask-migrate = "*"
 
 [dev-packages]
 

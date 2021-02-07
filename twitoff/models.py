@@ -16,7 +16,7 @@ class User(DB.Model):
     newest_tweet_id = DB.Column(DB.BigInteger)
 
     def __repr__(self):
-        return "<User: {}>".format(self.name)
+      return "<User: {}>".format(self.name)
 
 
 # Tweet Table (in relational database the table is "tweet")
@@ -29,12 +29,20 @@ class Tweet(DB.Model):
     vect = DB.Column(DB.PickleType, nullable=False)
     # foreign key - user.id
     user_id = DB.Column(DB.BigInteger, DB.ForeignKey(
-        'user.id'), nullable=False)
-    user = DB.relationship('User', backref=DB.backref('tweet', lazy=True))
+      'user.id'), nullable=False)
+    user = DB.relationship('User', backref=DB.backref('tweets', lazy=True))
 
     def __repr__(self):
-        return "<Tweet: {}>".format(self.text)
+      return "<Tweet: {}>".format(self.text)
 
+
+# def insert_example_users():
+#   """We will get an error if we run this twice without dropping and creating"""
+#   drew = User(id=1, name="drew")
+#   elon = User(id=2, name="elonmusk")
+#   DB.session.add(drew)
+#   DB.session.add(elon)
+#   DB.session.commit()
 
 
 
